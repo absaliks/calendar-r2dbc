@@ -1,4 +1,4 @@
-package absaliks.gateway
+package absaliks.calendar.events
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -6,14 +6,14 @@ import org.springframework.http.MediaType
 import org.springframework.web.reactive.function.server.router
 
 @Configuration
-class TaskRouter(private val taskHandler: TaskHandler) {
+class EventRouter(private val eventHandler: EventHandler) {
 
     @Bean
     fun route() = router {
         accept(MediaType.APPLICATION_JSON).nest {
-            "/tasks".nest {
-                GET("/", taskHandler::getAllTasks)
-                GET("/{id}", taskHandler::getItem)
+            "/events".nest {
+                GET("/", eventHandler::getAllEvents)
+                GET("/{id}", eventHandler::getItem)
             }
         }
     }
