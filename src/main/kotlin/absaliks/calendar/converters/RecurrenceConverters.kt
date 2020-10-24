@@ -1,5 +1,6 @@
-package absaliks.calendar.events
+package absaliks.calendar.converters
 
+import absaliks.calendar.model.Recurrence
 import org.springframework.core.convert.converter.Converter
 import org.springframework.data.convert.ReadingConverter
 import org.springframework.data.convert.WritingConverter

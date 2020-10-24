@@ -1,7 +1,7 @@
 package absaliks.calendar.config
 
-import absaliks.calendar.events.RecurrenceReadConverter
-import absaliks.calendar.events.RecurrenceWriteConverter
+import absaliks.calendar.converters.RecurrenceReadConverter
+import absaliks.calendar.converters.RecurrenceWriteConverter
 import io.r2dbc.spi.ConnectionFactories
 import io.r2dbc.spi.ConnectionFactory
 import org.springframework.context.annotation.Configuration
