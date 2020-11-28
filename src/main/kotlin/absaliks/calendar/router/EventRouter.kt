@@ -12,9 +12,9 @@ class EventRouter(private val eventHandler: EventHandler) {
     fun eventRoutes() = router {
         accept(MediaType.APPLICATION_JSON).nest {
             "/events".nest {
-                GET("/", eventHandler::getAllEvents)
+                GET("", eventHandler::getAllEvents)
                 GET("/{id}", eventHandler::getEvent)
-                POST("/", eventHandler::createEvent)
+                POST("", eventHandler::createEvent)
                 PATCH("/{id}", eventHandler::updateEvent)
             }
         }
