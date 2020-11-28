@@ -8,7 +8,7 @@ import absaliks.calendar.repository.EventRepository
 import org.springframework.boot.ApplicationRunner
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.data.r2dbc.core.DatabaseClient
+import org.springframework.r2dbc.core.DatabaseClient
 import reactor.core.publisher.Flux
 import java.time.Instant
 import java.time.temporal.ChronoUnit.DAYS
@@ -22,7 +22,7 @@ class DBInitializer(
 
     @Bean
     fun initEvents() = ApplicationRunner {
-        val initSchema = db.execute {
+        val initSchema = db.sql {
             """ CREATE TABLE EVENT (
                     id IDENTITY NOT NULL PRIMARY KEY,
                     name VARCHAR(127) NOT NULL,

@@ -1,5 +1,6 @@
 package absaliks.calendar.service
 
+import absaliks.calendar.exceptions.EntityNotFoundException
 import absaliks.calendar.model.EventLogEntry
 import absaliks.calendar.repository.EventLogRepository
 import absaliks.calendar.repository.EventRepository
@@ -37,7 +38,8 @@ class EventLogService(
 
     fun updateEntry(id: Long, patch: JsonNode): Mono<EventLogEntry> {
         val patcher = Patcher(patch)
-        return eventLogRepository.requireOne(id)
+        return eventLogRepository.findById(id)
+            .switchIfEmpty(Mono.error(EntityNotFoundException(id, EventLogEntry::class)))
             .map { existing ->
                 EventLogEntry(
                     id = existing.id,
